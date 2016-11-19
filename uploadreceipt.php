@@ -10,7 +10,8 @@
 
 	// check if form is submitted
 
-	if(isset($_GET['storeid'])){
-		echo $_GET['storeid'];
-	}
+	echo "hiiii";
+	// if(isset($_GET['storeid'])){
+	// 	echo $_GET['storeid'];
+	// }
 ?>

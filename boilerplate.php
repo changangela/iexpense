@@ -88,6 +88,14 @@
 
 		<script src = "vendor/jquery/jquery-3.1.0.min.js"></script>
 		<script src = "vendor/bootstrap/js/bootstrap.min.js"></script>
+		<script src = "vendor/owl-carousel/js/owl.carousel.min.js"></script>
 		<script src = "js/main.js"></script>
+
+		<script>
+			$('.owl-carousel').owlCarousel({
+				loop: true,
+				items: 4
+			});
+		</script>
 	</body>
 </html>

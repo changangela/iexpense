@@ -108,18 +108,19 @@
         								$recentrow = mysqli_fetch_array($recentresult);
         								$recentitems = explode(" ", $recentrow['itemlist']);
         								
-        								foreach ($recentitems as &$item){
+        								foreach ($recentitems as $item){
         									$storequery = "SELECT * FROM items WHERE id =" . $item;
         									$storeresult = mysqli_query($con, $storequery);
         									$storerow = mysqli_fetch_array($storeresult);
         									
 									?>
 										<div class = "item">
-	    									<a class = "thumbnail" name = <?php $storerow['name'] ?> url = <?php echo $storerow['image']; ?> date = <?php echo $storerow['date']; ?> >
+	    									<a class = "thumbnail" name = <?php echo '"'. $storerow['name'].'"' ?> date = <?php echo '"'. $storerow['date'].'"'; ?> >
 	    										<p>Item name: <?php echo $storerow['name']; 
 	    										?></p>
 	    										
-	    										<img src = <?php echo '"'. $storerow['image'].'"'; ?>>
+	    										<img src = <?php echo '"'. $storerow['image'].'"'; ?> >
+
 
 	    										
 	    									</a>

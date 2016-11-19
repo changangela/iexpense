@@ -12,10 +12,16 @@
 	$date = $_GET['date'];
 	$id = $_GET['id'];
 
-	$query = "UPDATE purchases SET userid = " . $_SESSION['userid'].", itemlist = '" . $itemlist."', storeid = ".$storeid.", date = '". $date ."' WHERE id=".$id." ";
-	echo $query;
-	if(mysqli_query($con, $query)){
+	$query = "UPDATE purchases SET userid = ".$_SESSION['userid']." WHERE id = ".$id."";
+	$query .= "UPDATE purchases SET itemlist = '".$itemlist."' WHERE id = ".$id."";
+	$query .= "UPDATE purchases SET storeid= ".$storeid." WHERE id = ".$id."";
+	$query .= "UPDATE purchases SET date = '".$date."' WHERE id = ".$id."";
+	echo $query ;
+
+
+	if(mysqli_multi_query($con, $query)){
 	}else{
+		echo mysqli_error();
 		echo "Connection unsuccessful, please try again later.";
 	}
 ?>

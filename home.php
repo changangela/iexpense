@@ -16,6 +16,7 @@
 <html>
 	<head>
 		<title>Home | iExpense</title>
+			<meta content = "width = device.width , initial-scale = 1.0" name = "viewport">
 			<link rel = "stylesheet" href = "vendor/font-awesome/css/font-awesome.min.css"/>
 	        <link rel = "stylesheet" href = "vendor/bootstrap/css/bootstrap.min.css" type="text/css"/>
 	        <link rel = "stylesheet" href = "vendor/owl-carousel/css/owl.carousel.css" type="text/css"/>

@@ -6,6 +6,9 @@
 	}
 
 	include_once "connectdb.php";
+	$userquery = "SELECT * FROM users WHERE id = " . $_SESSION['userid'];
+	$userresult = mysqli_query($con, $query);
+
 ?>
 
 <!DOCTYPE html>
@@ -85,9 +88,67 @@
                 </div>
             </div>
         </nav>
+        <div class = "container">
+        	<div class = "row">
+        		<div class = "col-lg-12">
+        			<h2 class = "text-center page-header"><?php echo $_SESSION['username']; ?>'s home page
+        			</h2>
+        			<div class = "panel panel-default">
+        				<div class = "panel panel-heading">
+        					<h5> Your most recent purchases </h5>
+        				</div>
+        				<div class = "panel panel-body">
+        					<div class = "row">
+        						
+        						<div class="owl-carousel col-md-12">
 
+        							<?php
+        								$recentquery = "SELECT * FROM purchases WHERE userid =". $_SESSION['userid'] . " ORDER BY date DESC";
+        								$recentresult =mysqli_query($con, $recentquery);
+        								$recentrow = mysqli_fetch_array($recentresult);
+        								$recentitems = explode(" ", $recentrow['itemlist']);
+        								
+        								foreach ($recentitems as &$item){
+        									$storequery = "SELECT * FROM items WHERE id =" . $item;
+        									$storeresult = mysqli_query($con, $storequery);
+        									$storerow = mysqli_fetch_array($storeresult);
+        									
+									?>
+										<div class = "item">
+	    									<a class = "thumbnail" name = <?php $storerow['name'] ?> url = <?php echo $storerow['image']; ?> date = <?php echo $storerow['date']; ?> >
+	    										<p>Item name: <?php echo $storerow['name']; 
+	    										?></p>
+	    										
+	    										<img src = <?php echo '"'. $storerow['image'].'"'; ?>>
+
+	    										
+	    									</a>
+	      								</div>
+        							<?php }	?>
+        								
+
+
+
+
+        						</div>
+        					</div>
+        				</div>
+        			</div>
+        		</div>
+
+        	</div>
+
+        </div>
 		<script src = "vendor/jquery/jquery-3.1.0.min.js"></script>
 		<script src = "vendor/bootstrap/js/bootstrap.min.js"></script>
+		<script src = "vendor/owl-carousel/js/owl.carousel.min.js"></script>
 		<script src = "js/main.js"></script>
+
+		<script>
+			$('.owl-carousel').owlCarousel({
+				loop: true,
+				items: 4
+			});
+		</script>
 	</body>
 </html>

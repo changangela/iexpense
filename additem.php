@@ -106,7 +106,18 @@
                 </div>
             </div>
         </nav>
+        <div class = "container">
+        	<div class = "row">
+        		<div class = "col-lg-12">
+        			<form role = "form" action ="<?php echo $_SERVER['PHP_SELF']; ?>" method ="post" name= "additemform">
+        				<fieldset>
+        					
+        				</fieldset>
+        			</form>
+        		</div>
 
+        	</div>
+        </div>
 		<script src = "vendor/jquery/jquery-3.1.0.min.js"></script>
 		<script src = "vendor/bootstrap/js/bootstrap.min.js"></script>
 		<script src = "js/main.js"></script>

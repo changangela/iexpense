@@ -8,6 +8,10 @@
 	include_once "connectdb.php";
 	$userquery = "SELECT * FROM users WHERE id = " . $_SESSION['userid'];
 	$userresult = mysqli_query($con, $query);
+	$recentquery = "SELECT * FROM purchases WHERE userid =". $_SESSION['userid'] . " ORDER BY date DESC";
+    $recentresult =mysqli_query($con, $recentquery);
+    $recentrow = mysqli_fetch_array($recentresult);
+    $recentitems = explode(" ", $recentrow['itemlist']);
 
 ?>
 
@@ -90,12 +94,27 @@
         </nav>
         <div class = "container">
         	<div class = "row">
-        		<div class = "col-lg-12">
+        		<div class = "col-lg-12 col-md-12">
         			<h2 class = "text-center page-header"><?php echo $_SESSION['username']; ?>'s home page
         			</h2>
         			<div class = "panel panel-default">
         				<div class = "panel panel-heading">
-        					<h5> Your most recent purchases </h5>
+        					<h4> Your most recent purchases </h4>
+        					<h5> Location: <?php
+        					$storeid = $recentrow['storeid'];
+        					$storequery= "SELECT * FROM stores WHERE id =". $storeid;
+        					$storeresult = mysqli_query($con, $storequery);
+        					$storerow=mysqli_fetch_array($storeresult);
+        					$purchasetotal=0;
+        					foreach ($recentitems as $item){
+        						$itemquery = "SELECT * FROM items WHERE id =" . $item;
+        						$itemresult = mysqli_query($con, $itemquery);
+        						$itemrow = mysqli_fetch_array($itemresult);
+        						$purchasetotal = $purchasetotal + $itemrow['price'];
+        					}
+        					echo $storerow['name']. ", Purchase total: ". $purchasetotal;
+        					 ?></h5>
+
         				</div>
         				<div class = "panel panel-body">
         					<div class = "row">
@@ -103,23 +122,20 @@
         						<div class="owl-carousel col-md-12">
 
         							<?php
-        								$recentquery = "SELECT * FROM purchases WHERE userid =". $_SESSION['userid'] . " ORDER BY date DESC";
-        								$recentresult =mysqli_query($con, $recentquery);
-        								$recentrow = mysqli_fetch_array($recentresult);
-        								$recentitems = explode(" ", $recentrow['itemlist']);
+           								
         								
         								foreach ($recentitems as $item){
-        									$storequery = "SELECT * FROM items WHERE id =" . $item;
-        									$storeresult = mysqli_query($con, $storequery);
-        									$storerow = mysqli_fetch_array($storeresult);
+        									$itemquery = "SELECT * FROM items WHERE id =" . $item;
+        									$itemresult = mysqli_query($con, $itemquery);
+        									$itemrow = mysqli_fetch_array($itemresult);
         									
 									?>
 										<div class = "item">
-	    									<a class = "thumbnail" name = <?php echo '"'. $storerow['name'].'"' ?> date = <?php echo '"'. $storerow['date'].'"'; ?> >
-	    										<p>Item name: <?php echo $storerow['name']; 
+	    									<a class = "thumbnail" name = <?php echo '"'. $itemrow['name'].'"' ?> date = <?php echo '"'. $itemrow['date'].'"'; ?> >
+	    										<p>Item name: <?php echo $itemrow['name']; 
 	    										?></p>
 	    										
-	    										<img src = <?php echo '"'. $storerow['image'].'"'; ?> >
+	    										<img src = <?php echo '"'. $itemrow['image'].'"'; ?> >
 
 
 	    										

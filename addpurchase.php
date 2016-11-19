@@ -7,14 +7,16 @@
 		header("Location: login.php");
 	}
 
-	$name = $_GET['name'];
-	$image = $_GET['image'];
-	$price = $_GET['price'];
+	$storeid = $_GET['storeid'];
+	$itemlist = $_GET['itemlist'];
+	$date = $_GET['date'];
 
-	$query = "INSERT INTO items (name, image, price) VALUES ('" . $name."', '".$image."', ".$price.")" ;
+	$query = "INSERT INTO purchases (userid, itemlist, storeid, date) VALUES (" . $_SESSION['userid'].", '" . $itemlist."', ".$storeid.",'". $date ."')" ;
 	$result = mysqli_query($con, $query);
+	echo $query;
 	if($result){
 	}else{
 		echo "Connection unsuccessful, please try again later.";
 	}
+
 ?>

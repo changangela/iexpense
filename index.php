@@ -72,7 +72,7 @@
 			</div>
 		</div>
 		<!--CONTENT-->
-		<div class="jumbotron" style="background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255,255,255, 0.6)), url('img/benefits.jpeg'); background-repeat: no-repeat; background-size: cover; height:100vh;">
+		<div class="jumbotron" style="background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255,255,255, 0.6)), url('img/benefits.jpeg'); background-repeat: no-repeat; background-size: cover;">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
@@ -82,7 +82,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="jumbotron" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/description.jpeg'); background-repeat: no-repeat; background-size: cover; height:100vh;">
+		<div class="jumbotron" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/description.jpeg'); background-repeat: no-repeat; background-size: cover;">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
@@ -93,7 +93,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="jumbotron" style="background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255,255,255, 0.6)), url('img/security.jpg'); background-repeat: no-repeat; background-size: cover; height:100vh;">
+		<div class="jumbotron" style="background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255,255,255, 0.6)), url('img/security.jpg'); background-repeat: no-repeat; background-size: cover;">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
@@ -103,7 +103,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="jumbotron" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0,0,0, 0.6)), url('img/features.jpg'); background-repeat: no-repeat; background-size: cover; height:100vh;">
+		<div class="jumbotron" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0,0,0, 0.6)), url('img/features.jpg'); background-repeat: no-repeat; background-size: cover; ">
 				<div class="container">
 					<div class="row">
 					<div class="col-md-2">&nbsp;</div>

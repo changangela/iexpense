@@ -76,16 +76,14 @@
 						<span class = "icon-bar"></span>
 					</button>
 					<span class = "page-scroll"><a class = "navbar-brand" href = "#top">iExpense</a></span>
+				</div>
+
+				<div class = "collapse navbar-collapse" id = "navbar">
 					<ul class = "nav navbar-nav navbar-right">
 						<li class = "page-scroll"><a href = "#benefits">Benefits</a></li>
 						<li class = "page-scroll"><a href = "#description">Description</a></li>
 						<li class = "page-scroll"><a href = "#modernsecurity">Modern security</a></li>
 						<li class = "page-scroll"><a href = "#features">Features</a></li>
-					</ul>
-				</div>
-
-				<div class = "collapse navbar-collapse" id = "navbar">
-					<ul class = "nav navbar-nav navbar-right">
 						<li><a href = "register.php"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
 						<li><a href = "login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 					</ul>
@@ -188,6 +186,9 @@
 				scrollTop: ($($anchor.attr('href')).offset().top - 50)
 				}, 1250, 'easeInOutExpo');
 				event.preventDefault();
+			});
+			$('#mainNav .navbar-collapse ul li a:not(.dropdown-toggle)').click(function() {
+			    $('#mainNav .navbar-toggle:visible').click();
 			});
 
 		</script>

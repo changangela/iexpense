@@ -14,9 +14,9 @@ xhr.addEventListener("load",function () {
         
         title: {
             text: "Expenses per category",
-            fontFamily: "Verdana",
-            fontColor: "Peru",
-            fontSize: 28
+            fontFamily: "Ubuntu",
+            fontColor: "Black",
+            fontSize: 20
 
         },
         animationEnabled: true,
@@ -24,24 +24,25 @@ xhr.addEventListener("load",function () {
             tickThickness: 0,
             lineThickness: 0,
             valueFormatString: " ",
-            gridThickness: 0                    
+            gridThickness: 0,
+            labelFontSize: 18,                   
         },
         axisX: {
             tickThickness: 0,
             lineThickness: 0,
             labelFontSize: 18,
-            labelFontColor: "Peru"
+            labelFontColor: "Black"
 
         },
         data: [
         {
-            indexLabelFontSize: 26,
-            toolTipContent: "<span style='\"'color: {color};'\"'><strong>{indexLabel}</strong></span><span style='\"'font-size: 20px; color:peru '\"'><strong> {y}%</strong></span>",
+            indexLabelFontSize: 14,
+            toolTipContent: "<span style='\"'color: {color};'\"'><strong>{indexLabel}</strong></span><span style='\"'font-size: 20px; color:black '\"'><strong> {y}%</strong></span>",
 
             indexLabelPlacement: "inside",
             indexLabelFontColor: "black",
-            indexLabelFontWeight: 600,
-            indexLabelFontFamily: "Verdana",
+            indexLabelFontWeight: 200,
+            indexLabelFontFamily: "Ubuntu",
             color: "#62C9C3",
             type: "bar",
             dataPoints: [ 

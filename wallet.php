@@ -124,7 +124,7 @@
         	<div class = "row">
         		
 
-        		<div class = "col-md-5">
+        		<div class = "col-md-5 col-md-offset-1">
     				<table class = "table table-hover">
     					<thead>
     						<tr><th class = "text-center">Your money spent per category</th></tr>

@@ -11,15 +11,6 @@
 <html>
 	<head>
 		<title> | iExpense</title>
-<<<<<<< HEAD
-		<link rel = "stylesheet" href = "vendor/font-awesome/css/font-awesome.min.css"/>
-	    <link rel = "stylesheet" href = "vendor/bootstrap/css/bootstrap.min.css" type="text/css"/>
-	    <link rel = "stylesheet" href = "vendor/owl-carousel/css/owl.carousel.css" type="text/css"/>
-	    <link rel = "stylesheet" href = "vendor/owl-carousel/css/owl.theme.css" type="text/css"/>
-	    <link rel = "stylesheet" href = "vendor/owl-carousel/css/owl.transitions.css" type="text/css"/>
-	    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"/> 
-	    <link rel = "stylesheet" href = "css/main.css" type = "text/css"/>
-=======
 			<meta content = "width = device.width , initial-scale = 1.0" name = "viewport">
 			<link rel = "stylesheet" href = "vendor/font-awesome/css/font-awesome.min.css"/>
 	        <link rel = "stylesheet" href = "vendor/bootstrap/css/bootstrap.min.css" type="text/css"/>
@@ -28,7 +19,6 @@
 	        <link rel = "stylesheet" href = "vendor/owl-carousel/css/owl.transitions.css" type="text/css"/>
 	        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"/> 
 	        <link rel = "stylesheet" href = "css/main.css" type = "text/css"/>
->>>>>>> 08643c7f2867b017bf75b5c52cce5ac32b351525
 	</head>
 	<body>
 		<nav class = "navbar navbar-default" role = "navigation">

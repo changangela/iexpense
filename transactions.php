@@ -145,6 +145,39 @@
 
 			<div class = "col-lg-12" id = "viewstagelist">
 				<div class = "row"><h4>View: listview</h4></div>
+				
+					<?php 
+					$purchaseresult = mysqli_query($con, $purchasequery);
+					while($purchaserow = mysqli_fetch_array($purchaseresult)){
+						$purchaseitems = explode(" ", $purchaserow['itemlist']);
+
+					?>
+
+					<div class = "table table-striped">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Price</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<?php 
+									foreach ($purchaseitems as $item){ 
+										$itemquery = "SELECT * FROM items WHERE id =" . $item;
+										$itemresult = mysqli_query($con, $itemquery);
+										$itemrow = mysqli_fetch_array($itemresult);	
+										echo "<td>". $item['name']. "</td>";
+										echo "<td>". $item['price']. "</td>";
+									}
+								?>
+								
+							</tr>
+						</tbody>
+					</div>
+
+					<?php }?>
+				
 						
 			</div>
 

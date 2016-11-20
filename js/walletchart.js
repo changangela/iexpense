@@ -2,7 +2,7 @@ var xhr= new XMLHttpRequest();
 xhr.open("GET", "../walletjson.php");
 xhr.setRequestHeader("Content-Type","application/json");
 xhr.addEventListener("load",function () {
-    alert("Hi");
+    
     var data = JSON.parse(this.responseText);
     var personal = data.personal;
     var technology= data.technology;
@@ -10,7 +10,7 @@ xhr.addEventListener("load",function () {
     var entertainment= data.entertainment;
     var total = data.totalexpense;
 
-    var chart = new CanvasJS.Chart("chartmander", {
+    var chart = new CanvasJS.Chart("wallet-chart", {
         
         title: {
             text: "Expenses per category",

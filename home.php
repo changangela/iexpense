@@ -96,7 +96,7 @@
         <div class = "container">
         	<div class = "row">
         		<div class = "col-lg-12 col-md-12">
-        			<h2 class = "text-center page-header"><?php echo $_SESSION['username']; ?>'s home page
+        			<h2 class = "text-center page-header">Welcome <?php echo $_SESSION['username']; ?>!
         			</h2>
         			<div class = "panel panel-info">
         				<div class = "panel panel-heading clearfix">
@@ -129,17 +129,14 @@
         									$itemrow = mysqli_fetch_array($itemresult);
         									
 									?>
-										<div class = "item col-eq-height">
-	    									<a class = "thumbnail" name = <?php echo '"'. $itemrow['name'].'"'; ?> price = <?php echo '"'. $itemrow['price'].'"'; ?> category = <?php echo "'" . $itemrow['category'] . "'"; ?>>
-	    										<p><?php echo $itemrow['name']; 
-	    										?></p>
-	    										
-	    										<img src = <?php echo '"'. $itemrow['image'].'"'; ?> >
-
-
-	    										
-	    									</a>
-	      								</div>
+										<div class = "col-eq-height  thumbnail-item item">
+											<a href = "#item-modal" data-toggle = "modal" class = "thumbnail" name = <?php echo '"'. $itemrow['name'].'"'; ?> price = <?php echo '"'. $itemrow['price'].'"'; ?> category = <?php echo "'" . $itemrow['category'] . "'"; ?> store = <?php echo "'". $storerow['name'] ."'";?> image = <?php echo '"'. $itemrow['image'].'"'; ?> >
+												<p><?php echo $itemrow['name']; 
+												?></p>
+												
+												<img src = <?php echo '"'. $itemrow['image'].'"'; ?> >				
+											</a>
+										</div>
         							<?php }	?>
 		   						</div>
         					</div>

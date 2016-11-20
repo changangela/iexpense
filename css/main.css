@@ -30,3 +30,12 @@ html, body{
 .item-hide{
 	display : none;
 }
+
+.modal-img{
+	height: 230px;
+	max-width: 100%;
+}
+
+.modal-body .well{
+	height: 230px;
+}

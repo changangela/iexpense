@@ -1,12 +1,12 @@
 var xhr = new XMLHttpRequest();
-xhr.open("GET", "expensesjsonarray.php");
+xhr.open("GET", "../expensesjsonarray.php");
 xhr.setRequestHeader("Content-Type", "application/json"); // http expect a json
 xhr.addEventListener("load", function(){
 	
 	var data = JSON.parse(this.responseText);
 
 	var diff= parseInt(data.visiontotal, 10)-parseInt(data.visionclaimed, 10);
-	var chart = new CanvasJS.Chart("chartmander",
+	var chart = new CanvasJS.Chart("vision-chart",
 	{
 		title:{
 			text: "Vision Care Claim",

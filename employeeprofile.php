@@ -25,8 +25,11 @@
 	        <link rel = "stylesheet" href = "vendor/owl-carousel/css/owl.transitions.css" type="text/css"/>
 	        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"/> 
 	        <link rel = "stylesheet" href = "css/main.css" type = "text/css"/>
+	        
 	</head>
 	<body>
+		<script src="js/dentalchart.js"></script>
+        <script src="js/visionchart.js"></script>
 		<nav class = "navbar navbar-default" role = "navigation">
             <div class = "container-fluid">
                 <div class= " navbar-header">
@@ -85,61 +88,67 @@
         		</div>
         	</div>
         </div>
-        <div class = "col-md-10 col-md-offset-1">
+        <div class = "col-md-5 col-md-offset-1">
 	        <table class = "table table-hover">
 	        	<thead>
 	        		<tr>
 	        			<th>Field </th>
 	        			<th>Employee data </th>
-	        			<th>Claimed </th>
 	        		</tr>
 	        	</thead>
 	        	<tbody>
 	        		<tr>
 	        			<td>First name</td>
 	        			<td><?php echo $row['first']; ?> </td>
-	        			<td>N/A</td>
+
 	        		</tr>
 	        		<tr>
 	        			<td>Last name </td>
 	        			<td><?php echo $row['last']; ?> </td>
-	        			<td>N/A</td>
+
 	        		</tr>
 	        		<tr>
 	        			<td>Employee ID </td>
 	        			<td><?php echo $row['id']; ?> </td>
-	        			<td>N/A</td>
+
 	        		</tr>
 	        		<tr>
 	        			<td>Username </td>
 	        			<td><?php echo $row['username']; ?> </td>
-	        			<td>N/A</td>
+
 	        		</tr>
 	        		<tr>
 	        			<td>Salary</td>
 	        			<td><?php echo "$".$row['salary']; ?> </td>
-	        			<td>N/A</td>
+
 	        		</tr>
 	        		<tr>
 	        			<td>Dental</td>
-	          			<td><?php echo "$".$dental_total; ?> </td>
-	          			<td><?php echo "$".$dental_claimed; ?> </td>
+	          			<td><?php echo "$".$dental_total." (claimed $". $dental_claimed . ")"; ?> </td>
+	          		
 	           		</tr>
 	        		<tr>
 	        			<td>Vision</td>
-	        			<td><?php echo "$".$vision_total; ?> </td>
-	          			<td><?php echo "$".$vision_claimed; ?> </td>
+	        			<td><?php echo "$".$vision_total." (claimed $". $vision_claimed . ")"; ?> </td>
 	          			 
 	        		</tr>
 	        		<tr>
 	        			<td>RRSP</td>
 	        			<td><?php echo "$".$row['rrsp']; ?> </td>
-	        			<td>N/A</td>
 	        		</tr>
 	        	</tbody>
 
 	        </table>
+	        
         </div>
+        <div class = "col-md-2 col-sm-3">
+	        <div id = "dental-chart"> </div>
+	    </div>
+	     <div class = "col-md-2 col-sm-3">
+	        <div id = "vision-chart"> </div>
+	    </div>
+
+        <script type="text/javascript" src="js/canvasjs.min.js"></script>
 		<script src = "vendor/jquery/jquery-3.1.0.min.js"></script>
 		<script src = "vendor/bootstrap/js/bootstrap.min.js"></script>
 		<script src = "vendor/owl-carousel/js/owl.carousel.min.js"></script>

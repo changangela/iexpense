@@ -10,7 +10,7 @@ xhr.addEventListener("load", function(){
 	{
 		title:{
 			text: "Vision Care Claim",
-			fontFamily: "arial black"
+			fontFamily: "Ubuntu"
 		},
                 animationEnabled: true,
 		legend: {
@@ -21,7 +21,7 @@ xhr.addEventListener("load", function(){
 		data: [
 		{        
 			type: "pie",
-			indexLabelFontFamily: "Garamond",       
+			indexLabelFontFamily: "Ubuntu",       
 			indexLabelFontSize: 20,
 			indexLabelFontWeight: "bold",
 			startAngle:0,

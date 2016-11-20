@@ -1,10 +1,8 @@
 <?php
 	session_start();
-
 	if(!isset($_SESSION['userid'])){
 		header("Location: index.php");
 	}
-
 	include_once "connectdb.php";
 	$userquery = "SELECT * FROM users WHERE id = " . $_SESSION['userid'];
 	$userresult = mysqli_query($con, $query);
@@ -12,7 +10,6 @@
     $recentresult =mysqli_query($con, $recentquery);
     $recentrow = mysqli_fetch_array($recentresult);
     $recentitems = explode(" ", $recentrow['itemlist']);
-
 ?>
 
 <!DOCTYPE html>

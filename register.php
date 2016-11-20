@@ -20,6 +20,8 @@
 		$cpassword = mysqli_real_escape_string($con, $_POST['cpassword']);
 		$firstname = mysqli_real_escape_string($con, $_POST['firstname']);
 		$lastname = mysqli_real_escape_string($con, $_POST['lastname']);
+		$isemployer = mysqli_real_escape_string($con, $_POST['isemployer']);
+
 		// name can contain only alpha characters
 		if(!preg_match("/^\w+$/",$username)){
 			$error = true;
@@ -49,7 +51,8 @@
 			// attempts to insert new user info into database
 			// password is passed through a hash function producing a new hash value
 
-			$query = "INSERT INTO users (username, email, password, first, last) VALUES('" . $username . "','" . $email . "','" . md5($password) . "', '" . $firstname . "', '" .$lastname . "' )";
+			$query = "INSERT INTO users (username, email, password, first, last, isemployer) VALUES('" . $username . "','" . $email . "','" . md5($password) . "', '" . $firstname . "', '" .$lastname . "','" . $isemployer ."' )";
+
 			if(mysqli_query($con, $query)){
 				$successmsg = "Registration successful. <a href = 'login.php'>Click here to login.</a>";
 			}else{
@@ -135,6 +138,11 @@
 								<span class = "text-danger"><?php if(isset($cpassword_error)) echo $cpassword_error;?></span>
 							</div>
 
+							<div class = "form-group">
+								<label class="radio-inline"><input type="radio" value="0" name = "isemployer" checked>Employee</label>
+								<label class="radio-inline"><input type="radio" value="1" name = "isemployer" >Employer</label>
+								<label class="radio-inline"><input type="radio" value="-1" name = "isemployer">Personal</label>
+							</div>
 							<div class = "form-group">
 								<button type = "submit" name = "signup" class = "btn btn-primary">
 									Signup

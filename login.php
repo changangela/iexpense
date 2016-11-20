@@ -20,7 +20,13 @@
 			if($row['password'] == md5($password)){
 				$_SESSION['userid'] = $row['id'];
 				$_SESSION['username'] = $row['username'];
-				header("Location: index.php");
+
+				echo $row['isemployer'];
+				if($row['isemployer'] == 1){
+					header("Location: employer.php");
+				}else{
+					header("Location: index.php");
+				}
 			}
 			else{
 				$errormsg = "Username and password do not match.";

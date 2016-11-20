@@ -114,7 +114,7 @@
         									
 									?>
 										<div class = "col-eq-height  thumbnail-item item">
-											<a href = "#item-modal" data-toggle = "modal" class = "thumbnail" name = <?php echo '"'. $itemrow['name'].'"'; ?> price = <?php echo '"'. $itemrow['price'].'"'; ?> category = <?php echo "'" . $itemrow['category'] . "'"; ?> store = <?php echo "'". $storerow['name'] ."'";?> image = <?php echo '"'. $itemrow['image'].'"'; ?> date = <?php echo "'" . $recentrow['date']."'"; ?> >
+											<a href = "#item-modal" data-toggle = "modal" class = "thumbnail" name = <?php echo '"'. $itemrow['name'].'"'; ?> price = <?php echo '"'. $itemrow['price'].'"'; ?> category = <?php echo "'" . $itemrow['category'] . "'"; ?> store = <?php echo "'". $storerow['name'] ."'";?> image = <?php echo '"'. $itemrow['image'].'"'; ?> date = <?php echo "'" . $recentrow['date']."'"; ?> receiptid = <?php echo "'" . $recentrow['id']."'"; ?> >
 												<p><?php echo $itemrow['name']; 
 												?></p>
 												
@@ -165,9 +165,8 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<a href = "transactions.php" type = "button" class = "btn btn-primary col-xs-offset-1" id = "view-receipt">
-							<i class="icon-eye-open"></i>
-								View Receipt
+						<a href = "transactions.php" type = "button" class = "btn btn-primary col-xs-offset-1" id = "download-receipt">
+						<span class="glyphicon glyphicon-download-alt"></span> Download Receipt
 						</a>
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					</div>

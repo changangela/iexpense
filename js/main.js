@@ -7,6 +7,7 @@ $(document).ready(function(){
         var price = $(this).attr('price'); 
         var date = $(this).attr('date');
         var category = $(this).attr('category');
+        var receiptid = $(this).attr('receiptid');
 
         $('.modal-title').text(name);
         $('.item-store').text(store);
@@ -15,8 +16,7 @@ $(document).ready(function(){
         $('.item-date').text(date);
         $('.item-category').text(category);
         $('.item-location').text("York");
+        $('#download-receipt').attr("href", "downloadreceipt.php?receiptid=" + receiptid);
     });
 
-    $("#download-receipt").click(function(){
-    });
 });

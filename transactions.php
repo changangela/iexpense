@@ -127,7 +127,7 @@
 												$itemrow = mysqli_fetch_array($itemresult);	
 										?>
 										<div class = "col-eq-height  thumbnail-item item">
-											<a href = "#item-modal" data-toggle = "modal" class = "thumbnail" name = <?php echo '"'. $itemrow['name'].'"'; ?> price = <?php echo '"'. $itemrow['price'].'"'; ?> category = <?php echo "'" . $itemrow['category'] . "'"; ?> store = <?php echo "'". $storerow['name'] ."'";?> image = <?php echo '"'. $itemrow['image'].'"'; ?> date = <?php echo "'" . $purchaserow['date']."'"; ?> >
+											<a href = "#item-modal" data-toggle = "modal" class = "thumbnail" name = <?php echo '"'. $itemrow['name'].'"'; ?> price = <?php echo '"'. $itemrow['price'].'"'; ?> category = <?php echo "'" . $itemrow['category'] . "'"; ?> store = <?php echo "'". $storerow['name'] ."'";?> image = <?php echo '"'. $itemrow['image'].'"'; ?> date = <?php echo "'" . $purchaserow['date']."'"; ?> receiptid = <?php echo "'" . $purchaserow['id']."'"; ?> >
 												<p><?php echo $itemrow['name']; 
 												?></p>
 												
@@ -181,9 +181,7 @@
 							</div>
 						</div>
 						<div class="modal-footer">
-							<a href = "transactions.php" type = "button" class = "btn btn-primary col-xs-offset-1" id = "download-receipt">
-								<i class="icon-eye-open"></i>
-									Download Receipt
+							<a href = "" type = "button" class = "btn btn-primary col-xs-offset-1" id = "download-receipt"><span class="glyphicon glyphicon-download-alt"></span> Download receipt
 							</a>
 							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 						</div>

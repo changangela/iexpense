@@ -145,38 +145,60 @@
 
 			<div class = "col-lg-12" id = "viewstagelist">
 				<div class = "row"><h4>View: listview</h4></div>
-				
+					
 					<?php 
-					$purchaseresult = mysqli_query($con, $purchasequery);
-					while($purchaserow = mysqli_fetch_array($purchaseresult)){
-						$purchaseitems = explode(" ", $purchaserow['itemlist']);
+						$purchaseresult = mysqli_query($con, $purchasequery);
+						while($purchaserow = mysqli_fetch_array($purchaseresult)){
+							$purchaseitems = explode(" ", $purchaserow['itemlist']);
 
 					?>
+						<div class = "owl-carousel col-md-12">
+							
+							<table class = "table table-striped table-responsive table-condensed">
+									
+								<thead>
+									<tr>
+										<?php $
+						    			$storeid = $purchaserow['storeid'];
+					        			$storequery= "SELECT * FROM stores WHERE id =". $storeid;
+					        			$storeresult = mysqli_query($con, $storequery);
+					        			$storerow=mysqli_fetch_array($storeresult);
+					        			$purchasetotal=0;
+					        			foreach ($purchaseitems as $item){
+			        						$itemquery = "SELECT * FROM items WHERE id =" . $item;
+			        						$itemresult = mysqli_query($con, $itemquery);
+			        						$itemrow = mysqli_fetch_array($itemresult);
+			        						$purchasetotal = $purchasetotal + $itemrow['price'];
+					        			}
+				        				echo "<th class = 'text-center'>".$storerow['name']. "  ".$purchaserow['date']." </th>";		        					 
+										?>
+									</tr>
+									<tr>
+										<th>Name</th>
+										<th>Price</th>
+									</tr>
+								</thead>
+								<tbody>
+									
 
-					<div class = "table table-striped">
-						<thead>
-							<tr>
-								<th>Name</th>
-								<th>Price</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<?php 
-									foreach ($purchaseitems as $item){ 
-										$itemquery = "SELECT * FROM items WHERE id =" . $item;
-										$itemresult = mysqli_query($con, $itemquery);
-										$itemrow = mysqli_fetch_array($itemresult);	
-										echo "<td>". $item['name']. "</td>";
-										echo "<td>". $item['price']. "</td>";
-									}
-								?>
-								
-							</tr>
-						</tbody>
-					</div>
-
+									<?php 
+										foreach ($purchaseitems as $item){ 
+											$itemquery = "SELECT * FROM items WHERE id =" . $item;
+											$itemresult = mysqli_query($con, $itemquery);
+											$itemrow = mysqli_fetch_array($itemresult);	
+											echo "<tr><td>". $itemrow['name']. "</td>";
+											echo "<td>". $itemrow['price']. "</td></tr>";
+										}
+									?>
+										
+									
+								</tbody>
+							</table>
+						</div>
 					<?php }?>
+				</div>
+
+					
 				
 						
 			</div>

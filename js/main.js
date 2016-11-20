@@ -16,4 +16,7 @@ $(document).ready(function(){
         $('.item-category').text(category);
         $('.item-location').text("York");
     });
+
+    $("#download-receipt").click(function(){
+    });
 });

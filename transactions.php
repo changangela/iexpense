@@ -181,9 +181,9 @@
 							</div>
 						</div>
 						<div class="modal-footer">
-							<a href = "transactions.php" type = "button" class = "btn btn-primary col-xs-offset-1" id = "view-receipt">
+							<a href = "transactions.php" type = "button" class = "btn btn-primary col-xs-offset-1" id = "download-receipt">
 								<i class="icon-eye-open"></i>
-									View Receipt
+									Download Receipt
 							</a>
 							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 						</div>

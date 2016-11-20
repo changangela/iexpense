@@ -82,6 +82,8 @@
         		<div class = "col-lg-12 col-md-12">
         			<h2 class = "text-center page-header">Welcome <?php echo $_SESSION['username']; ?>!
         			</h2>
+
+        		<?php if($recentrow){ ?>
         			<div class = "panel panel-info">
         				<div class = "panel panel-heading clearfix">
         					<h4 class = "pull-left">Your most recent receipt - <?php
@@ -100,6 +102,7 @@
         					 ?></h4>
 
         				</div>
+
         				<div class = "panel panel-body">
         					<div class = "row">
         						<div class="owl-carousel col-md-12">
@@ -126,6 +129,7 @@
         					</div>
         				</div>
         			</div>
+        			<?php } ?>
         		</div>
 
         	</div>

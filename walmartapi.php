@@ -11,7 +11,7 @@
 	$obj = json_decode($json);
 
 	$pieces = explode(" ", $obj->name);
-	$name= implode(" ", array_splice($pieces, 0, 3));
+	$name= implode(" ", array_splice($pieces, 0, 4));
 	$image = $obj->largeImage;
 	$price = $obj->salePrice;
 	$categoryPath = $obj->categoryPath;

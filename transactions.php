@@ -255,6 +255,7 @@
 			});
 
 			$('#thumbnailview').addClass("active");
+			$('#viewstagelist').addClass("item-hide");
 
 			$('#views li').click(function(){
 		        $('#views li').removeClass('active');
@@ -264,8 +265,10 @@
 
 		        if(viewValue == "thumbnailview"){
 		        	$("#viewstagethumbnail").removeClass("item-hide");
+		        	$("#viewstagelist").addClass("item-hide");
 		        }else{
 		        	$("#viewstagethumbnail").addClass("item-hide");
+		        	$("#viewstagelist").removeClass("item-hide");
 		        }
 		     
 		    });

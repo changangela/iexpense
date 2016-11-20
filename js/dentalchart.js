@@ -6,7 +6,7 @@ xhr.addEventListener("load", function(){
 	var data = JSON.parse(this.responseText);
 
 	var diff= parseInt(data.dentaltotal, 10)-parseInt(data.dentalclaimed, 10);
-	var chart = new CanvasJS.Chart("chartmander",
+	var chart = new CanvasJS.Chart("dental-chart",
 	{
 		title:{
 			text: "Dental Claim",

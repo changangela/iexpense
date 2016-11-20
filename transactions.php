@@ -4,6 +4,12 @@
 		header("Location: index.php");
 	}
 	include_once "connectdb.php";
+
+	$userquery = "SELECT * FROM users WHERE id = " . $_SESSION['userid'];
+	$userresult = mysqli_query($con, $query);
+	$purchasequery = "SELECT * FROM purchases WHERE userid =". $_SESSION['userid'] . " ORDER BY date DESC";
+    $purchaseresult =mysqli_query($con, $purchasequery);
+
 ?>
 
 <!DOCTYPE html>
@@ -76,43 +82,108 @@
 				</div>
 				<div class = "col-md-12">
 					<!-- Centered Pills -->
-					<ul class="nav nav-pills nav-justified" id = "views" >
-						<li id = "all"><a href ="#" class= "" >All purchases</a></li>
-						<li id = "groceries"><a href ="#" class= "">Groceries</a></li>
-						<li id = "technology"><a href ="#" class= "" >Technology</a></li>
-						<li id = "personal"><a href ="#" class= "" >Personal</a></li>
-						<li id = "entertainment"><a href ="#" class= "" >Entertainment</a></li>
+					<ul class="nav nav-pills" id = "views" >
+						<li id = "thumbnailview"><a href ="#" class= "" >Thumbnail view</a></li>
+						<li id = "listview"><a href ="#" class= "">Listview</a></li>
 					</ul>
 				</div>
+			</div>
 
-				<div class = "col-lg-12" id = "viewstage">
-					<div class = "row"><h4>View: all</h4></div>
-						<?php
+			<div class = "col-md-12" id = "viewstagethumbnail">
+				<div class = "row"><h4>View: thumbnail</h4></div>
+				<?php
+					while($purchaserow = mysqli_fetch_array($purchaseresult)){
+						$purchaseitems = explode(" ", $purchaserow['itemlist']);?>
+						<div class = "panel panel-success">
+	        				<div class = "panel panel-heading clearfix">
+		        				<h5 class = "pull-left">
+		        					<?php
+		        						$storeid = $purchaserow['storeid'];
+		        						$storequery= "SELECT * FROM stores WHERE id =". $storeid;
+		        					$storeresult = mysqli_query($con, $storequery);
+		        					$storerow=mysqli_fetch_array($storeresult);
+		        					$purchasetotal=0;
+		        					foreach ($purchaseitems as $item){
+		        						$itemquery = "SELECT * FROM items WHERE id =" . $item;
+		        						$itemresult = mysqli_query($con, $itemquery);
+		        						$itemrow = mysqli_fetch_array($itemresult);
+		        						$purchasetotal = $purchasetotal + $itemrow['price'];
+		        					}
+		        					echo "Receipt from " . $storerow['name']. " for $". $purchasetotal;
+		        					 ?>
+	        					 </h5>
 
-						while($purchaserow = mysqli_fetch_array($purchaseresult)){
-							$purchaseitems = explode(" ",$purchaserow['itemlist']);
+	        				</div>
+							<div class = "panel panel-body">
+        						<div class = "row">
+        							<div class="owl-carousel col-md-12">
+										<?php
+           									foreach ($purchaseitems as $item){
+												$itemquery = "SELECT * FROM items WHERE id =" . $item;
+												$itemresult = mysqli_query($con, $itemquery);
+												$itemrow = mysqli_fetch_array($itemresult);	
+										?>
+										<div class = "col-eq-height  thumbnail-item item">
+											<a href = "#item-modal" data-toggle = "modal" class = "thumbnail" name = <?php echo '"'. $itemrow['name'].'"'; ?> price = <?php echo '"'. $itemrow['price'].'"'; ?> category = <?php echo "'" . $itemrow['category'] . "'"; ?> store = <?php echo "'". $storerow['name'] ."'";?> image = <?php echo '"'. $itemrow['image'].'"'; ?> date = <?php echo "'" . $purchaserow['date']."'"; ?> >
+												<p><?php echo $itemrow['name']; 
+												?></p>
+												
+													<img src = <?php echo '"'. $itemrow['image'].'"'; ?> >
+												</a>
+											</div>
+	        							<?php }	?>
+			   						</div>
+        						</div>
+        					</div>
+        				</div>
+					<?php } ?>
+			</div>
 
-							foreach ($purchaseitems as $item){
-							$itemquery = "SELECT * FROM items WHERE id = " . $item;
-							$itemresult = mysqli_query($con, $itemquery);
-							$itemrow = mysqli_fetch_array($itemresult);
-							$storequery= "SELECT * FROM stores WHERE id =". $purchaserow['storeid'];
-        					$storeresult = mysqli_query($con, $storequery);
-        					$storerow=mysqli_fetch_array($storeresult);
-						?>						
-							
-							<div class = "col-lg-3 col-md-3 col-sm-6 col-xs-6 col-eq-height  thumbnail-item">
-								<a href = "#item-modal" data-toggle = "modal" class = "thumbnail" name = <?php echo '"'. $itemrow['name'].'"'; ?> price = <?php echo '"'. $itemrow['price'].'"'; ?> category = <?php echo "'" . $itemrow['category'] . "'"; ?> store = <?php echo "'". $storerow['name'] ."'";?> image = <?php echo '"'. $itemrow['image'].'"'; ?> date = <?php echo "'" . $purchaserow['date']."'"; ?> >
-									<p><?php echo $itemrow['name']; 
-									?></p>
-									
-									<img src = <?php echo '"'. $itemrow['image'].'"'; ?> >				
-								</a>
+
+			<div class = "col-lg-12" id = "viewstagelist">
+				<div class = "row"><h4>View: listview</h4></div>
+						
+			</div>
+
+			<div class="modal fade" id="item-modal" role="dialog">
+				<div class = "modal-dialog modal-md">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title"></h4>
+						</div>
+						<div class="modal-body">
+							<div class = "container-fluid">	
+								<div class = "row center">
+									<div class = "col-md-6 col-xs-12">
+										<img src = "" class = "modal-img center-block"/>
+									</div>
+									<div class = "col-md-6 col-xs-12 well">
+										<div class = "row">
+	 										<dl>
+	  											<dt class = "col-xs-6">Store</dt>
+	  											<dd class = "col-xs-6 item-store"><p> &nbsp; </p></dd>
+	  											<dt class = "col-xs-6">Price</dt>
+	  											<dd class = "item-price col-xs-6"><p></p></dd>
+	  											<dt class = "col-xs-6">Category</dt>
+	  											<dd class = "col-xs-6 item-category"><p></p></dd>
+	  											<dt class = "col-xs-6">Location</dt>
+	  											<dd class = "col-xs-6 item-location"><p></p></dd>
+	  											<dt class = "col-xs-6">Date</dt>
+	  											<dd class = "col-xs-6 item-date"><p></p></dd>
+											</dl>
+										</div>
+									</div>
+								</div>
 							</div>
-						<?php }} ?>
-
-					<div class = "thumbnail-hide" id = "receipts-gallery">
-						<?php include "receiptsgallery.php"; ?>
+						</div>
+						<div class="modal-footer">
+							<a href = "transactions.php" type = "button" class = "btn btn-primary col-xs-offset-1" id = "view-receipt">
+								<i class="icon-eye-open"></i>
+									View Receipt
+							</a>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -128,6 +199,22 @@
 				loop: true,
 				items: 4
 			});
+
+			$('#thumbnailview').addClass("active");
+
+			$('#views li').click(function(){
+		        $('#views li').removeClass('active');
+		        $(this).addClass('active');
+
+		        var viewValue = this.getAttribute('id');
+
+		        if(viewValue == "thumbnailview"){
+		        	$("#viewstagethumbnail").removeClass("item-hide");
+		        }else{
+		        	$("#viewstagethumbnail").addClass("item-hide");
+		        }
+		     
+		    });
 		</script>
 	</body>
 </html>

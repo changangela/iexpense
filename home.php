@@ -162,7 +162,7 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<a type = "button" class = "btn btn-primary col-xs-offset-1" id = "view-receipt">
+						<a href = "transactions.php" type = "button" class = "btn btn-primary col-xs-offset-1" id = "view-receipt">
 							<i class="icon-eye-open"></i>
 								View Receipt
 						</a>

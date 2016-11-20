@@ -38,11 +38,35 @@
 			#white-text{
 				color:#f0f0f5;
 			}
+
+			#main-nav{
+				border:0px;
+				background: rgba(0,0,0,0.3);
+				padding: 10px 0;
+				-webkit-transition: all 0.6s;
+				-moz-transition: all 0.6s;
+				transition: all 0.6s;
+			}
+			#main-nav a{
+				color: #fff;;
+			}
+			#main-nav.affix {
+				border:0px;
+				background: rgba(255,255,255,0.8);;
+				padding: 0px;
+				-webkit-transition: all 0.6s;
+				-moz-transition: all 0.6s;
+				transition: all 0.6s;
+			}
+			#main-nav.affix a{
+				color: #000;
+			}	
+				
 			</style>
 	</head>
 	<body>
 		<!--NAVBAR-->
-		<nav class = "navbar navbar-default navbar-fixed-top" role = "navigation">
+		<nav class = "navbar navbar-default navbar-fixed-top" role = "navigation" id = "main-nav">
 			<div class = "container-fluid">
 				<div class = "navbar-header">
 					<button type = "button" class = "navbar-toggle" data-toggle = "collapse" data-target = "#navbar">
@@ -51,7 +75,13 @@
 						<span class = "icon-bar"></span>
 						<span class = "icon-bar"></span>
 					</button>
-					<a class = "navbar-brand" href = "index.html">iExpense</a>
+					<span class = "page-scroll"><a class = "navbar-brand" href = "#top">iExpense</a></span>
+					<ul class = "nav navbar-nav navbar-right">
+						<li class = "page-scroll"><a href = "#benefits">Benefits</a></li>
+						<li class = "page-scroll"><a href = "#description">Description</a></li>
+						<li class = "page-scroll"><a href = "#modernsecurity">Modern security</a></li>
+						<li class = "page-scroll"><a href = "#features">Features</a></li>
+					</ul>
 				</div>
 
 				<div class = "collapse navbar-collapse" id = "navbar">
@@ -62,7 +92,7 @@
 				</div>
 			</div>
 		</nav>
-		<div class = "jumbotron" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/img1.jpg'); background-repeat: no-repeat; background-size: cover; height:100vh;">
+		<div id = "top" class = "jumbotron" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/img1.jpg'); background-repeat: no-repeat; background-size: cover; height:100vh;">
 			<div class = "container">
 				<div class = "row">
 					<div class = "col-md-12" style="padding-top:25vh">
@@ -72,7 +102,7 @@
 			</div>
 		</div>
 		<!--CONTENT-->
-		<div class="jumbotron" style="background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255,255,255, 0.6)), url('img/benefits.jpeg'); background-repeat: no-repeat; background-size: cover;">
+		<div class="jumbotron" id = "benefits" style="background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255,255,255, 0.6)), url('img/benefits.jpeg'); background-repeat: no-repeat; background-size: cover;">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
@@ -84,7 +114,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="jumbotron" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/description.jpeg'); background-repeat: no-repeat; background-size: cover;">
+		<div class="jumbotron" id = "description" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/description.jpeg'); background-repeat: no-repeat; background-size: cover;">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
@@ -97,7 +127,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="jumbotron" style="background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255,255,255, 0.6)), url('img/security.jpg'); background-repeat: no-repeat; background-size: cover;">
+		<div class="jumbotron" id = "modernsecurity" style="background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255,255,255, 0.6)), url('img/security.jpg'); background-repeat: no-repeat; background-size: cover;">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
@@ -108,7 +138,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="jumbotron" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0,0,0, 0.6)), url('img/features.jpg'); background-repeat: no-repeat; background-size: cover; ">
+		<div class="jumbotron" id = "features" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0,0,0, 0.6)), url('img/features.jpg'); background-repeat: no-repeat; background-size: cover; ">
 				<div class="container">
 					<div class="row">
 					<div class="col-md-2">&nbsp;</div>
@@ -141,8 +171,25 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src = "vendor/jquery/easing.min.js"></script>
 		<script>
-			$('.navbar').aff
+			// offset for main navigation
+			$('#main-nav').affix({
+			    offset: {
+			        top: 200
+			    }
+			})
+
+			$('.page-scroll a').bind('click', function(event) {
+				var $anchor = $(this);
+				$anchor.trigger('mouseout');
+				$anchor.trigger('mouseleave');
+				$('html, body').stop().animate({
+				scrollTop: ($($anchor.attr('href')).offset().top - 50)
+				}, 1250, 'easeInOutExpo');
+				event.preventDefault();
+			});
+
 		</script>
 	</body>
 </html>

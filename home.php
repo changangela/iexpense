@@ -130,7 +130,7 @@
         									
 									?>
 										<div class = "col-eq-height  thumbnail-item item">
-											<a href = "#item-modal" data-toggle = "modal" class = "thumbnail" name = <?php echo '"'. $itemrow['name'].'"'; ?> price = <?php echo '"'. $itemrow['price'].'"'; ?> category = <?php echo "'" . $itemrow['category'] . "'"; ?> store = <?php echo "'". $storerow['name'] ."'";?> image = <?php echo '"'. $itemrow['image'].'"'; ?> >
+											<a href = "#item-modal" data-toggle = "modal" class = "thumbnail" name = <?php echo '"'. $itemrow['name'].'"'; ?> price = <?php echo '"'. $itemrow['price'].'"'; ?> category = <?php echo "'" . $itemrow['category'] . "'"; ?> store = <?php echo "'". $storerow['name'] ."'";?> image = <?php echo '"'. $itemrow['image'].'"'; ?> date = <?php echo "'" . $recentrow['date']."'"; ?> >
 												<p><?php echo $itemrow['name']; 
 												?></p>
 												
@@ -145,14 +145,75 @@
         		</div>
 
         	</div>
-
         </div>
+
+
+		<div class="modal fade" id="item-modal" role="dialog">
+			<div class = "modal-dialog modal-md">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title"></h4>
+					</div>
+					<div class="modal-body">
+						<div class = "container-fluid">	
+							<div class = "row center">
+								<div class = "col-md-6 col-xs-12">
+									<img src = "" class = "modal-img center-block"/>
+								</div>
+								<div class = "col-md-6 col-xs-12 well">
+									<div class = "row">
+ 										<dl>
+  											<dt class = "col-xs-6">Store</dt>
+  											<dd class = "col-xs-6 item-store"><p> &nbsp; </p></dd>
+  											<dt class = "col-xs-6">Price</dt>
+  											<dd class = "item-price col-xs-6"><p></p></dd>
+  											<dt class = "col-xs-6">Category</dt>
+  											<dd class = "col-xs-6 item-category"><p></p></dd>
+  											<dt class = "col-xs-6">Location</dt>
+  											<dd class = "col-xs-6 item-location"><p></p></dd>
+  											<dt class = "col-xs-6">Date</dt>
+  											<dd class = "col-xs-6 item-date"><p></p></dd>
+										</dl>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<a type = "button" class = "btn btn-primary col-xs-offset-1" id = "view-receipt">
+							<span class="glyphicon glyphicon-pencil"></span>
+								View Receipt
+						</a>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 		<script src = "vendor/jquery/jquery-3.1.0.min.js"></script>
 		<script src = "vendor/bootstrap/js/bootstrap.min.js"></script>
 		<script src = "vendor/owl-carousel/js/owl.carousel.min.js"></script>
 		<script src = "js/main.js"></script>
 
 		<script>
+	        $('.thumbnail').click(function(){
+		        // $('.modal-body').empty();
+		        var name = $(this).attr('name');
+		        var image = $(this).attr('image');
+		        var store = $(this).attr('store');
+		        var price = $(this).attr('price'); 
+		        var date = $(this).attr('date');
+		        var category = $(this).attr('category');
+
+		        $('.modal-title').text(name);
+		        $('.item-store').text(store);
+		        $('.item-price').text("$" + price);
+		        $('.modal-body .modal-img').attr('src',image);
+		        $('.item-date').text(date);
+		        $('.item-category').text(category);
+		        $('.item-location').text("York");
+		    });
 			$('.owl-carousel').owlCarousel({
 				loop: true,
 				items: 4

@@ -8,7 +8,7 @@
 
 	$receiptid = $_GET['receiptid'];
 
-	$purchasequery = "SELECT * FROM purchases WHERE userid =". $_SESSION['userid'] . " AND id=" . $receiptid;
+	$purchasequery = "SELECT * FROM purchases WHERE id=" . $receiptid;
     $purchaseresult = mysqli_query($con, $purchasequery);
     $purchaserow = mysqli_fetch_array($purchaseresult);
 

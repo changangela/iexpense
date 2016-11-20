@@ -93,7 +93,7 @@
 			</div>
 
 			<div class = "col-md-12" id = "viewstagethumbnail">
-				<div class = "row"><h4>Thumbnail view</h4></div>
+				<div class = "row"><h4>View as thumbnail</h4></div>
 				<?php
 					while($purchaserow = mysqli_fetch_array($purchaseresult)){
 						$purchaseitems = explode(" ", $purchaserow['itemlist']);?>

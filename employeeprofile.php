@@ -46,6 +46,9 @@
 						<li>
 							<a href = "purchases.php">Purchases</a>
 						</li>
+						<li>
+							<a href = "services.php">Services</a>
+						</li>
 						<li class = "active">
 							<a href = "employeeprofile.php">Employee profile</a>
 						</li>

@@ -115,7 +115,7 @@
 		        					echo "Receipt from " . $storerow['name']. " for $". $purchasetotal;
 		        					 ?>
 	        					 </h5>
-
+	        					 <a href = "downloadreceipt.php?receiptid=<?php echo $purchaserow['id'];?>" class = "pull-right btn btn-default"><span class="glyphicon glyphicon-download-alt"></span> Download receipt</a>
 	        				</div>
 							<div class = "panel panel-body">
         						<div class = "row">

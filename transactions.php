@@ -16,7 +16,7 @@
 
 <html>
 	<head>
-		<title> | iExpense</title>
+		<title>Transactions | iExpense</title>
 			<meta content = "width = device.width , initial-scale = 1.0" name = "viewport">
 			<link rel = "stylesheet" href = "vendor/font-awesome/css/font-awesome.min.css"/>
 	        <link rel = "stylesheet" href = "vendor/bootstrap/css/bootstrap.min.css" type="text/css"/>

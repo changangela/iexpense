@@ -120,6 +120,7 @@
 							<div class = "panel panel-body">
         						<div class = "row">
         							<div class="owl-carousel col-md-12">
+        								
 										<?php
            									foreach ($purchaseitems as $item){
 												$itemquery = "SELECT * FROM items WHERE id =" . $item;
@@ -128,12 +129,11 @@
 										?>
 										<div class = "col-eq-height  thumbnail-item item">
 											<a href = "#item-modal" data-toggle = "modal" class = "thumbnail" name = <?php echo '"'. $itemrow['name'].'"'; ?> price = <?php echo '"'. $itemrow['price'].'"'; ?> category = <?php echo "'" . $itemrow['category'] . "'"; ?> store = <?php echo "'". $storerow['name'] ."'";?> image = <?php echo '"'. $itemrow['image'].'"'; ?> date = <?php echo "'" . $purchaserow['date']."'"; ?> receiptid = <?php echo "'" . $purchaserow['id']."'"; ?> >
-												<p><?php echo $itemrow['name']; 
-												?></p>
-												
-													<img src = <?php echo '"'. $itemrow['image'].'"'; ?> >
-												</a>
-											</div>
+											<p><?php echo $itemrow['name']; ?></p>
+											
+											<img src = <?php echo '"'. $itemrow['image'].'"'; ?> >
+											</a>
+										</div>
 	        							<?php }	?>
 			   						</div>
         						</div>
@@ -144,17 +144,17 @@
 
 
 			<div class = "col-lg-12" id = "viewstagelist">
-				<div class = "row"><h4>View: listview</h4></div>
+				<div class = "row"><h4>View: listview receipt format</h4></div>
 					
+				<div class = "owl-carousel col-md-12">
 					<?php 
 						$purchaseresult = mysqli_query($con, $purchasequery);
 						while($purchaserow = mysqli_fetch_array($purchaseresult)){
 							$purchaseitems = explode(" ", $purchaserow['itemlist']);
 
 					?>
-						<div class = "owl-carousel col-md-12">
-							
-							<table class = "table table-striped table-responsive table-condensed">
+						<div class = "item">
+							<table class = "table table-striped table-responsive table-condensed well">
 									
 								<thead>
 									<tr>
@@ -187,7 +187,7 @@
 											$itemresult = mysqli_query($con, $itemquery);
 											$itemrow = mysqli_fetch_array($itemresult);	
 											echo "<tr><td>". $itemrow['name']. "</td>";
-											echo "<td>". $itemrow['price']. "</td></tr>";
+											echo "<td>$". $itemrow['price']. "</td></tr>";
 										}
 									?>
 										
@@ -195,11 +195,9 @@
 								</tbody>
 							</table>
 						</div>
-					<?php }?>
-				</div>
 
-					
-				
+				<?php }?>
+			</div>
 						
 			</div>
 

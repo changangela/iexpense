@@ -18,7 +18,8 @@
 		$email = mysqli_real_escape_string($con, $_POST['email']);
 		$password = mysqli_real_escape_string($con, $_POST['password']);
 		$cpassword = mysqli_real_escape_string($con, $_POST['cpassword']);
-
+		$firstname = mysqli_real_escape_string($con, $_POST['firstname']);
+		$lastname = mysqli_real_escape_string($con, $_POST['lastname']);
 		// name can contain only alpha characters
 		if(!preg_match("/^\w+$/",$username)){
 			$error = true;
@@ -48,8 +49,7 @@
 			// attempts to insert new user info into database
 			// password is passed through a hash function producing a new hash value
 
-			$query = "INSERT INTO users (username, email, password) VALUES('" . $username . "','" . $email . "','" . md5($password) . "')";
-
+			$query = "INSERT INTO users (username, email, password, first, last) VALUES('" . $username . "','" . $email . "','" . md5($password) . "', '" . $firstname . "', '" .$lastname . "' )";
 			if(mysqli_query($con, $query)){
 				$successmsg = "Registration successful. <a href = 'login.php'>Click here to login.</a>";
 			}else{
@@ -103,6 +103,18 @@
 								<label for = "username">Username</label>
 								<input type = "text" name = "username" placeholder="johnsmith" required value="<?php if($error) echo $username;?>" class = "form-control"/>
 								<span class = "text-danger"><?php if(isset($username_error)) echo $username_error;?></span>
+							</div>
+
+							<div class = "form-group">
+								<label for = "firstname">First name</label>
+								<input type = "text" name = "firstname" placeholder="John" required value="<?php if($error) echo $username;?>" class = "form-control"/>
+								<span class = "text-danger"><?php if(isset($firstname_error)) echo $firstname_error;?></span>
+							</div>
+
+							<div class = "form-group">
+								<label for = "lastname">Last name</label>
+								<input type = "text" name = "lastname" placeholder="Smith" required value="<?php if($error) echo $lastname;?>" class = "form-control"/>
+								<span class = "text-danger"><?php if(isset($lastname_error)) echo $lastname_error;?></span>
 							</div>
 
 							<div class = "form-group">

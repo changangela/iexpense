@@ -163,7 +163,7 @@
 					</div>
 					<div class="modal-footer">
 						<a type = "button" class = "btn btn-primary col-xs-offset-1" id = "view-receipt">
-							<span class="glyphicon glyphicon-pencil"></span>
+							<i class="icon-eye-open"></i>
 								View Receipt
 						</a>
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

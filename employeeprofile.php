@@ -117,23 +117,23 @@
 	        		</tr>
 	        		<tr>
 	        			<td>Salary</td>
-	        			<td><?php echo $row['salary']; ?> </td>
+	        			<td><?php echo "$".$row['salary']; ?> </td>
 	        			<td>N/A</td>
 	        		</tr>
 	        		<tr>
 	        			<td>Dental</td>
-	          			<td><?php echo $dental_total; ?> </td>
-	          			<td><?php echo $dental_claimed; ?> </td>
+	          			<td><?php echo "$".$dental_total; ?> </td>
+	          			<td><?php echo "$".$dental_claimed; ?> </td>
 	           		</tr>
 	        		<tr>
 	        			<td>Vision</td>
-	        			<td><?php echo $vision_total; ?> </td>
-	          			<td><?php echo $vision_claimed; ?> </td>
+	        			<td><?php echo "$".$vision_total; ?> </td>
+	          			<td><?php echo "$".$vision_claimed; ?> </td>
 	          			 
 	        		</tr>
 	        		<tr>
 	        			<td>RRSP</td>
-	        			<td><?php echo $row['rrsp']; ?> </td>
+	        			<td><?php echo "$".$row['rrsp']; ?> </td>
 	        			<td>N/A</td>
 	        		</tr>
 	        	</tbody>

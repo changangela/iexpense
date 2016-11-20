@@ -57,4 +57,8 @@ $(document).ready(function(){
     $.each(textOverlay["Lines"], function (index, value) {
    		alert(textOverlay[index]);
     });
+
+
+
+
 });

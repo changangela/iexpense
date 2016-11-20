@@ -99,7 +99,7 @@
         			</h2>
         			<div class = "panel panel-default">
         				<div class = "panel panel-heading">
-        					<h4> Your most recent purchases </h4>
+        					<h4> Your most recent purchase </h4>
         					<h5> Location: <?php
         					$storeid = $recentrow['storeid'];
         					$storequery= "SELECT * FROM stores WHERE id =". $storeid;
@@ -112,19 +112,15 @@
         						$itemrow = mysqli_fetch_array($itemresult);
         						$purchasetotal = $purchasetotal + $itemrow['price'];
         					}
-        					echo $storerow['name']. ", Purchase total: ". $purchasetotal;
+        					echo $storerow['name']. ", Purchase total: ". $purchasetotal . " dollars";
         					 ?></h5>
 
         				</div>
         				<div class = "panel panel-body">
-        					<div class = "row">
-        						
+        					<div class = "row">        						
         						<div class="owl-carousel col-md-12">
 
-        							<?php
-           								
-        								
-        								foreach ($recentitems as $item){
+        							<?php         							foreach ($recentitems as $item){
         									$itemquery = "SELECT * FROM items WHERE id =" . $item;
         									$itemresult = mysqli_query($con, $itemquery);
         									$itemrow = mysqli_fetch_array($itemresult);
@@ -136,10 +132,7 @@
 	    										?></p>
 	    										
 	    										<img src = <?php echo '"'. $itemrow['image'].'"'; ?> >
-
-
-	    										
-	    									</a>
+	      									</a>
 	      								</div>
         							<?php }	?>
         								

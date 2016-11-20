@@ -94,7 +94,7 @@
 						<li>
 							<a href = "transactions.php">Transactions</a>
 						</li>
-						<li>
+						<li class = "active">
 							<a href = "wallet.php" class = "active">Wallet</a>
 						</li>
                         <li>

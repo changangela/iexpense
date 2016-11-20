@@ -5,9 +5,9 @@
 	}
 	include_once "connectdb.php";
 
-	$userquery = "SELECT * FROM users WHERE id = " . $_SESSION['userid'];
-	$userresult = mysqli_query($con, $query);
-	$purchasequery = "SELECT * FROM purchases WHERE userid =". $_SESSION['userid'] . " ORDER BY date DESC";
+	$userquery = "SELECT * FROM users WHERE id = " . $_GET['userid'];
+	$userresult = mysqli_query($con, $userquery);
+	$purchasequery = "SELECT * FROM purchases WHERE userid =". $_GET['userid'] . " ORDER BY date DESC";
     $purchaseresult =mysqli_query($con, $purchasequery);
 
 ?>
@@ -36,28 +36,13 @@
                         <span class = "icon-bar"></span>
                         <span class = "icon-bar"></span>
                     </button>
-                    <a class = "navbar-brand" href= "index.php">
-                        iExpense
+                    <a class = "navbar-brand" href= "employer.php">
+                        Back
                     </a>
                 </div>
 
                 <div class = "collapse navbar-collapse" id = "navbar">
                     <ul class = "nav navbar-nav navbar-right">
-						<li>
-							<a href = "purchases.php">Purchases</a>
-						</li>
-						<li>
-							<a href = "services.php">Services</a>
-						</li>
-						<li>
-							<a href = "employeeprofile.php">Employee profile</a>
-						</li>
-						<li class = "active">
-							<a href = "transactions.php">Transactions</a>
-						</li>
-						<li>
-							<a href = "wallet.php">Wallet</a>
-						</li>
                         <li>
                         	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         		<i class="icon-user" aria-hidden="true"></i>
@@ -81,7 +66,10 @@
         <div class = "container"> 
 			<div class ="row" >
 				<div class = "col-lg-12">
-					<h2 class = "text-center page-header">Transactions</h2>
+					<h2 class = "text-center page-header">
+						<?php $row = mysqli_fetch_array($userresult) ;
+						echo $row['first']." ". $row['last']. "'s purchases"?>
+					</h2>
 				</div>
 				<div class = "col-md-12">
 					<!-- Centered Pills -->
@@ -93,7 +81,7 @@
 			</div>
 
 			<div class = "col-md-12" id = "viewstagethumbnail">
-				<div class = "row"><h4>Thumbnail view</h4></div>
+				<div class = "row"><h4>View as Thumbnail</h4></div>
 				<?php
 					while($purchaserow = mysqli_fetch_array($purchaseresult)){
 						$purchaseitems = explode(" ", $purchaserow['itemlist']);?>
@@ -255,7 +243,6 @@
 			});
 
 			$('#thumbnailview').addClass("active");
-			$('#viewstagelist').addClass("item-hide");
 
 			$('#views li').click(function(){
 		        $('#views li').removeClass('active');
@@ -265,10 +252,8 @@
 
 		        if(viewValue == "thumbnailview"){
 		        	$("#viewstagethumbnail").removeClass("item-hide");
-		        	$("#viewstagelist").addClass("item-hide");
 		        }else{
 		        	$("#viewstagethumbnail").addClass("item-hide");
-		        	$("#viewstagelist").removeClass("item-hide");
 		        }
 		     
 		    });

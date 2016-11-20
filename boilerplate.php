@@ -38,32 +38,16 @@
                 <div class = "collapse navbar-collapse" id = "navbar">
                     <ul class = "nav navbar-nav navbar-right">
 						<li>
-							<a href = "myreceipts.php">My receipts</a>
+							<a href = "purchases.php">Purchases</a>
 						</li>
 						<li>
-							<a href = "mywallet.php">My wallet</a>
+							<a href = "employeeprofile.php">Employee profile</a>
 						</li>
 						<li>
-							<a href = "mystores.php">My stores</a>
+							<a href = "transactions.php">Transactions</a>
 						</li>
 						<li>
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                         		 <i class = "icon-plus"></i> Add
-                         		<span class="caret"></span>
-                         	</a>
-							<ul class="dropdown-menu">
-								<li>
-									<a href="addreceipt.php">
-										 Add receipt
-									</a>
-									<a href="addstore.php">
-										 Add store
-									</a>
-									<a href="addtransaction.php">
-										 Add transaction
-									</a>
-								</li>
-							</ul>
+							<a href = "wallet.php">Wallet</a>
 						</li>
                         <li>
                         	<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

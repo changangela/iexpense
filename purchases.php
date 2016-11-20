@@ -48,6 +48,9 @@
 							<a href = "purchases.php">Purchases</a>
 						</li>
 						<li>
+							<a href = "services.php">Services</a>
+						</li>
+						<li>
 							<a href = "employeeprofile.php">Employee profile</a>
 						</li>
 						<li>

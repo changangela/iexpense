@@ -1,6 +1,6 @@
 $(document).ready(function(){
-	
 
+<<<<<<< HEAD
     //Prepare form data
     var formData = new FormData();
     formData.append("file", fileToUpload);
@@ -61,4 +61,6 @@ $(document).ready(function(){
 
 
 
+=======
+>>>>>>> 08643c7f2867b017bf75b5c52cce5ac32b351525
 });

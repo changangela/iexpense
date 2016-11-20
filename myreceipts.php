@@ -1,22 +1,23 @@
 <?php
 	session_start();
+
 	if(!isset($_SESSION['userid'])){
 		header("Location: index.php");
 	}
+
 	include_once "connectdb.php";
+
 	$userquery = "SELECT * FROM users WHERE id = " . $_SESSION['userid'];
 	$userresult = mysqli_query($con, $query);
-	$recentquery = "SELECT * FROM purchases WHERE userid =". $_SESSION['userid'] . " ORDER BY date DESC";
-    $recentresult =mysqli_query($con, $recentquery);
-    $recentrow = mysqli_fetch_array($recentresult);
-    $recentitems = explode(" ", $recentrow['itemlist']);
+	$purchasequery = "SELECT * FROM purchases WHERE userid =". $_SESSION['userid'] . " ORDER BY date DESC";
+	$purchaseresult =  mysqli_query($con, $purchasequery);
 ?>
 
 <!DOCTYPE html>
 
 <html>
 	<head>
-		<title>Home | iExpense</title>
+		<title>My receipts | iExpense</title>
 			<meta content = "width = device.width , initial-scale = 1.0" name = "viewport">
 			<link rel = "stylesheet" href = "vendor/font-awesome/css/font-awesome.min.css"/>
 	        <link rel = "stylesheet" href = "vendor/bootstrap/css/bootstrap.min.css" type="text/css"/>
@@ -43,7 +44,7 @@
 
                 <div class = "collapse navbar-collapse" id = "navbar">
                     <ul class = "nav navbar-nav navbar-right">
-						<li>
+						<li class = :"active">
 							<a href = "myreceipts.php">My receipts</a>
 						</li>
 						<li>
@@ -90,59 +91,55 @@
                 </div>
             </div>
         </nav>
-        <div class = "container">
-        	<div class = "row">
-        		<div class = "col-lg-12 col-md-12">
-        			<h2 class = "text-center page-header">Welcome <?php echo $_SESSION['username']; ?>!
-        			</h2>
-        			<div class = "panel panel-info">
-        				<div class = "panel panel-heading clearfix">
-        					<h4 class = "pull-left">Your most recent receipt - <?php
-        					$storeid = $recentrow['storeid'];
-        					$storequery= "SELECT * FROM stores WHERE id =". $storeid;
+
+        <div class = "container"> 
+			<div class ="row" >
+				<div class = "col-lg-12">
+					<h2 class = "text-center page-header">My purchases </h2>
+				</div>
+				<div class = "col-md-12">
+					<!-- Centered Pills -->
+					<ul class="nav nav-pills nav-justified" id = "views" >
+						<li id = "all"><a href ="#" class= "" >All receipt</a></li>
+						<li id = "groceries"><a href ="#" class= "">Groceries</a></li>
+						<li id = "technology"><a href ="#" class= "" >Technology</a></li>
+						<li id = "personal"><a href ="#" class= "" >Personal</a></li>
+						<li id = "entertainment"><a href ="#" class= "" >Entertainment</a></li>
+					</ul>
+				</div>
+
+				<div class = "col-lg-12" id = "viewstage">
+					<div class = "row"><h4>View: all</h4></div>
+						<?php
+
+						while($purchaserow = mysqli_fetch_array($purchaseresult)){
+							$purchaseitems = explode(" ",$purchaserow['itemlist']);
+
+							foreach ($purchaseitems as $item){
+							$itemquery = "SELECT * FROM items WHERE id = " . $item;
+							$itemresult = mysqli_query($con, $itemquery);
+							$itemrow = mysqli_fetch_array($itemresult);
+							$storequery= "SELECT * FROM stores WHERE id =". $purchaserow['storeid'];
         					$storeresult = mysqli_query($con, $storequery);
         					$storerow=mysqli_fetch_array($storeresult);
-        					$purchasetotal=0;
-        					foreach ($recentitems as $item){
-        						$itemquery = "SELECT * FROM items WHERE id =" . $item;
-        						$itemresult = mysqli_query($con, $itemquery);
-        						$itemrow = mysqli_fetch_array($itemresult);
-        						$purchasetotal = $purchasetotal + $itemrow['price'];
-        					}
-        					echo $storerow['name']. " : $". $purchasetotal;
-        					 ?></h4>
+						?>						
+							
+							<div class = "col-lg-3 col-md-3 col-sm-6 col-xs-6 col-eq-height  thumbnail-item">
+								<a href = "#item-modal" data-toggle = "modal" class = "thumbnail" name = <?php echo '"'. $itemrow['name'].'"'; ?> price = <?php echo '"'. $itemrow['price'].'"'; ?> category = <?php echo "'" . $itemrow['category'] . "'"; ?> store = <?php echo "'". $storerow['name'] ."'";?> image = <?php echo '"'. $itemrow['image'].'"'; ?> date = <?php echo "'" . $purchaserow['date']."'"; ?> >
+									<p><?php echo $itemrow['name']; 
+									?></p>
+									
+									<img src = <?php echo '"'. $itemrow['image'].'"'; ?> >				
+								</a>
+							</div>
+						<?php }} ?>
 
-        				</div>
-        				<div class = "panel panel-body">
-        					<div class = "row">
-        						<div class="owl-carousel col-md-12">
-
-        							<?php
-           								
-        								
-        								foreach ($recentitems as $item){
-        									$itemquery = "SELECT * FROM items WHERE id =" . $item;
-        									$itemresult = mysqli_query($con, $itemquery);
-        									$itemrow = mysqli_fetch_array($itemresult);
-        									
-									?>
-										<div class = "col-eq-height  thumbnail-item item">
-											<a href = "#item-modal" data-toggle = "modal" class = "thumbnail" name = <?php echo '"'. $itemrow['name'].'"'; ?> price = <?php echo '"'. $itemrow['price'].'"'; ?> category = <?php echo "'" . $itemrow['category'] . "'"; ?> store = <?php echo "'". $storerow['name'] ."'";?> image = <?php echo '"'. $itemrow['image'].'"'; ?> date = <?php echo "'" . $recentrow['date']."'"; ?> >
-												<p><?php echo $itemrow['name']; 
-												?></p>
-												
-												<img src = <?php echo '"'. $itemrow['image'].'"'; ?> >				
-											</a>
-										</div>
-        							<?php }	?>
-		   						</div>
-        					</div>
-        				</div>
-        			</div>
-        		</div>
-
-        	</div>
-        </div>
+					<div class = "thumbnail-hide" id = "receipts-gallery">
+						<?php include "receiptsgallery.php"; ?>
+					</div>
+				</div>
+			</div>
+		</div>
 
 
 		<div class="modal fade" id="item-modal" role="dialog">
@@ -194,6 +191,39 @@
 		<script src = "js/main.js"></script>
 
 		<script>
+			$('.owl-carousel').owlCarousel({
+				loop: true,
+				items: 4
+			});
+
+			$('#all').addClass('active');
+
+		    $('#views li').click(function(){
+		        $('#views li').removeClass('active');
+		        $(this).addClass('active');
+
+		        var viewValue = this.getAttribute('id');
+		        // $('.viewstage h4').text("view: " + viewValue);
+				if(viewValue != "new")
+				    $('#viewstage h4').text("view: " + viewValue);
+				if(viewValue == "all"){
+				    $('.thumbnail-item').removeClass("item-hide");
+				}
+				else if(viewValue == "groceries"){
+				    $('.thumbnail-item').addClass("item-hide");
+				    $('[category = "groceries"').parent().removeClass("item-hide");
+				}else if(viewValue == "technology"){
+				    $('.thumbnail-item').addClass("item-hide");
+				    $('[category = "technology"').parent().removeClass("item-hide");
+				}else if(viewValue == "personal"){
+				    $('.thumbnail-item').addClass("item-hide");
+					$('[category = "personal"').parent().removeClass("item-hide");
+				}else if(viewValue == "entertainment"){
+				    $('.thumbnail-item').addClass("item-hide");
+				    $('[category = "entertainment"').parent().removeClass("item-hide");
+				}
+		    });
+
 	        $('.thumbnail').click(function(){
 		        // $('.modal-body').empty();
 		        var name = $(this).attr('name');
@@ -202,6 +232,7 @@
 		        var price = $(this).attr('price'); 
 		        var date = $(this).attr('date');
 		        var category = $(this).attr('category');
+
 		        $('.modal-title').text(name);
 		        $('.item-store').text(store);
 		        $('.item-price').text("$" + price);
@@ -210,10 +241,6 @@
 		        $('.item-category').text(category);
 		        $('.item-location').text("York");
 		    });
-			$('.owl-carousel').owlCarousel({
-				loop: true,
-				items: 4
-			});
 		</script>
 	</body>
 </html>

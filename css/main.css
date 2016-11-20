@@ -16,3 +16,26 @@ html, body{
   width: 150px;
   height: 150px;
 }
+
+.col-eq-height {
+	height: 215px;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	color: #31708f;
+}
+
+.item-hide{
+	display : none;
+}
+
+.modal-img{
+	height: 230px;
+	max-width: 100%;
+}
+
+.modal-body .well{
+	height: 230px;
+}

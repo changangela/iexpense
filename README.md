@@ -15,8 +15,8 @@ iExpense is an online receipt manager that keeps track of all employees’ compa
 
 ## Screenshots
 
-### Laundry Alerts - alerts you when your clothes are getting dirty
-![homescreen](screenshots/homescreen.png)
+### Transactions - view your recent receipts
+![1.png](screenshots/homescreen.png)
 
 </br>
 </br>

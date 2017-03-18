@@ -16,22 +16,16 @@ iExpense is an online receipt manager that keeps track of all employees’ compa
 ## Screenshots
 
 ### Transactions - view your recent receipts
-![1.png](screenshots/homescreen.png)
+![transactions](img/1.png)
 
 </br>
 </br>
 
-### Item View - Can view each individual item, and receive information on the number of times worn
-![itemview](screenshots/itemview.png)
+### Services / Employee Profile - Statistical analysis
+![services](img/2.png)
 
 </br>
 </br>
 
-### Closet View - stores the clothing items and outfit combos
-![view clothing](screenshots/closet.png)
-
-</br>
-</br>
-
-### Can personalize, edit, and delete outfit, and clothing items
-![add outfit](screenshots/addoutfit.png)
+### Purchases - detailed description of each item purchased
+![purchases](img/3.png)
